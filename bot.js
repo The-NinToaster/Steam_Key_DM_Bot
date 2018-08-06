@@ -16,7 +16,7 @@ var pool = mysql.createPool({
     host: "localhost",
     user: "root",
     password: "",
-    database: "projectwinter"
+    database: "DB Name"
 });
 
 client.on('ready', async () => {

@@ -15,12 +15,13 @@ client.on('message', message =>
 	//Reutrn if authored by bot 
 	if (message.author.bot) return; 
 
-	if (message.channel.type === text)
+	if (message.channel.type === "text")
 	{	
 	console.log(message.content);
-	if (message.content == '!verify' )
+	if (message.content == '!verify')
 	message.channel.send('This works!')
-	}		
+	}	
+	return; 
 }); 
 
 client.login('NDgxODkzOTgzMTYxOTQyMDM2.Dl8-2A.luFbY4xHcUI9G0ravu7WfHe0vhI');

@@ -1,0 +1,23 @@
+{
+  "name": "table-top-gods_key-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bot_new.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/The-NinToaster/Table-Top-Gods_Key-Bot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/The-NinToaster/Table-Top-Gods_Key-Bot/issues"
+  },
+  "homepage": "https://github.com/The-NinToaster/Table-Top-Gods_Key-Bot#readme",
+  "keywords": [],
+  "dependencies": {
+    "discord.js": "^11.4.2"
+  }
+}

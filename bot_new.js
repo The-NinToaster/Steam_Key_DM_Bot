@@ -4,6 +4,11 @@ const client = new Discord.Client();
 
 //fill in mysql shit later honestly... 
 
+let messageArray
+let command
+let verification 
+let username
+
 //start up 
 client.on('ready', () =>
 {
@@ -18,8 +23,14 @@ client.on('message', message =>
 	if (message.channel.type === "text")
 	{	
 	console.log(message.content);
-	if (message.content == '!verify')
-	message.channel.send('This works!')
+	//if (message.content == '!verify')
+	//message.channel.send('This works!')
+
+	messageArray = message.content.split (" "); 
+	command = messageArray[0]; 
+	verification = messageArray[1];
+	username = message.author.text; 
+	console.log(message.author.text); 
 	}	
 	return; 
 }); 

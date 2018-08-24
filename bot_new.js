@@ -29,8 +29,8 @@ client.on('message', message =>
 	messageArray = message.content.split (" "); 
 	command = messageArray[0]; 
 	verification = messageArray[1];
-	username = message.author.text; 
-	console.log(message.author.text); 
+	username = message.member.user.tag; 
+	console.log(message.member.user.tag;); 
 	}	
 	return; 
 }); 

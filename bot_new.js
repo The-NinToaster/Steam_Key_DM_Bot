@@ -30,7 +30,7 @@ client.on('message', message =>
 	command = messageArray[0]; 
 	verification = messageArray[1];
 	username = message.member.user.tag; 
-	console.log(message.member.user.tag;); 
+	console.log(message.member.user.tag); 
 	}	
 	return; 
 }); 

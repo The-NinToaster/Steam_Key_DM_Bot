@@ -19,9 +19,8 @@ client.on('message', message =>
 	{	
 	console.log(message.content);
 	if (message.content == '!verify' )
-	{message.channel.send('This works!')
-	}
-	
+	message.channel.send('This works!')
+	}		
 }); 
 
 client.login('NDgxODkzOTgzMTYxOTQyMDM2.Dl8-2A.luFbY4xHcUI9G0ravu7WfHe0vhI');

@@ -5,12 +5,12 @@ const client = new Discord.Client();
 //fill in mysql shit later honestly... 
 
 //start up 
-client.on('ready', async () =>
+client.on('ready', () =>
 {
 	console.log('Ready!'); 
 });
 
-client.on('message', async message => 
+client.on('message', message => 
 {
 	//Reutrn if authored by bot 
 	if (message.author.bot) return; 
@@ -19,8 +19,7 @@ client.on('message', async message =>
 	{	
 	console.log(message.content);
 	if (message.content == '!verify' )
-	{message.channel.send('This works!');
-	
+	{message.channel.send('This works!')
 	}
 	
 }); 

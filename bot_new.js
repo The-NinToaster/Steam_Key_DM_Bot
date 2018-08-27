@@ -3,10 +3,10 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 const mysql = require("mysql"); 
 
-let messageArray
-let command
-let verification 
-let username
+let messageArray;
+let command;
+let verification;
+let username;
 
 //mysql
 var pool = mysql.createPool({
@@ -23,7 +23,7 @@ client.on('ready', () =>
 });
 
 client.on('message', message => 
-{
+({
 	//Reutrn if authored by bot 
 	if (message.author.bot) return; 
 
@@ -53,13 +53,13 @@ client.on('message', message =>
 			{
 				//message.reply("hey this works!");
 				let sql = "SELECT * FROM verification WHERE verification_code = " + mysql.escape(verification); 
-				let steamKeySQL = "SELECT * FROM steam_keys WHERE key_given = 0 LIMIT 1"
+				let steamKeySQL = "SELECT * FROM steam_keys WHERE key_given = 0 LIMIT 1";
 
 				pool.getConnection(function (error, tempConnection)
 				{
 					if (!!error)
 					{
-						message.reply("Uh oh! It seems we can't reach our main system right now :cold_sweat: Reach out a developer and tell them that the system is down, please :dissapointed:'")
+						message.reply("Uh oh! It seems we can't reach our main system right now :cold_sweat: Reach out a developer and tell them that the system is down, please :dissapointed:'");
 					}
 					else 
 					{
@@ -135,6 +135,6 @@ client.on('message', message =>
 	}
 		
 	return; 
-}; 
+}
 
 client.login('NDgxODkzOTgzMTYxOTQyMDM2.Dl8-2A.luFbY4xHcUI9G0ravu7WfHe0vhI');

@@ -60,6 +60,7 @@ client.on('message', message =>
 					{
 						if (!!error)
 						{
+							console.log(error); 
 							message.reply("Uh oh! It seems we can't reach our main system right now :cold_sweat: Reach out a developer and tell them that the system is down, please :disappointed:");
 						}
 						else 

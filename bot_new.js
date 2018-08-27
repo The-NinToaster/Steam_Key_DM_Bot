@@ -92,7 +92,7 @@ client.on('message', message =>
 										message.author.send("You asked? I deliver! Here's one key for you!\n" + 
 										"All you have to do now is go to your Steam Library, click on \"ADD A GAME\" then, \"Activate Product on Steam\" (If you have a skin, follow the steps you need), and follow the instructions!\n" + 
 										"If you do not have steam, you can install it from here: https://store.steampowered.com/about/.  The game is currently compatible on Windows platforms, with Linux and Mac Support coming soon.\n" +
-										"You can check the Table Top Gods server's #getting_started and #news_and_updates channels for more information about the game, testing period and build information.\n" _+
+										"You can check the Table Top Gods server's #getting_started and #news_and_updates channels for more information about the game, testing period and build information.\n" +
 										"If you want to invite a friend to the program, let a developer know so they can tell you how to invite them.\n" + 
 										"Thank you for joining the testing program and we hope to hear your feedback!\n" + 
 										"```Your Steam Key: " + steamKeyResults[0].steam_key + "```"); 

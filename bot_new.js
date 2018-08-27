@@ -20,7 +20,7 @@ var pool = mysql.createPool({
 client.on('ready', () =>
 {
 	console.log('Ready!'); 
-};
+});
 
 client.on('message', message => 
 {

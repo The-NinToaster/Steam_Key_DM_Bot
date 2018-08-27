@@ -10,7 +10,7 @@ let username;
 
 //mysql
 var pool = mysql.createPool({
-	connectionLimit: 10,
+	//connectionLimit: 10,
 	host: `${config_new.host}`,
 	user: `${config_new.user}`,
 	password: `${config_new.password}`,

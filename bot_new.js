@@ -1,4 +1,4 @@
-const config = require ("./config.json");
+const config_new = require ("./config_new.json");
 const Discord = require("discord.js");
 const client = new Discord.Client();
 const mysql = require("mysql"); 
@@ -11,10 +11,10 @@ let username;
 //mysql
 var pool = mysql.createPool({
 	connectionLimit: 10,
-	host: `${config.host}`,
-	user: `${config.user}`,
-	password: `${config.password}`,
-	database: `${config.database}`
+	host: `${config_new.host}`,
+	user: `${config_new.user}`,
+	password: `${config_new.password}`,
+	database: `${config_new.database}`
 });
 
 //start up 
@@ -49,8 +49,8 @@ client.on('message', message =>
 			}
 			else 
 			{
-				if (!command.startsWith(config.prefix)) return; 
-				if (command === `${config.prefix}verify`) 
+				if (!command.startsWith(config_new.prefix)) return; 
+				if (command === `${config_new.prefix}verify`) 
 				{
 					//message.reply("hey this works!");
 					let sql = "SELECT * FROM verification WHERE verification_code = " + mysql.escape(verification); 
@@ -134,4 +134,4 @@ client.on('message', message =>
 	}
 }); 
 
-client.login(`${config.token}`);
+client.login(`${config_new.token}`);

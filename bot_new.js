@@ -37,7 +37,7 @@ client.on('message', message =>
 		username = message.member.user.tag; 
 		console.log(username); 
 		message.reply("Reading... :thinking:"); 
-		message.delete(3000); //deletes after 3 seconds 
+		message.delete(1000); //deletes after 1 second 
 
 		if (typeof verification != 'undefined' && verification)
 		{	
@@ -77,6 +77,7 @@ client.on('message', message =>
 
 								else 
 								{
+									console.log(signupIdResults[0].verification_used);
 									if (signupIdResults[0].verification_used == 0) //if key has not been used 
 									{
 										message.reply("One Key coming right up! :grin: Make sure to check your Direct Messages!. Remember you can only ask for one key per user"); 

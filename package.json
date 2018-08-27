@@ -18,6 +18,7 @@
   "homepage": "https://github.com/The-NinToaster/Table-Top-Gods_Key-Bot#readme",
   "keywords": [],
   "dependencies": {
-    "discord.js": "^11.4.2"
+    "discord.js": "^11.4.2",
+    "mysql.js": "^1.0.2"
   }
 }

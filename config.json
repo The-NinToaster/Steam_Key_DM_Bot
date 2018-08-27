@@ -1,4 +1,8 @@
 {
-    "token": "NDgxODkzOTgzMTYxOTQyMDM2.Dl8-2A.luFbY4xHcUI9G0ravu7WfHe0vhI",
-    "prefix": "!"
+    "token": "token",
+    "prefix": "prefix",
+	"host": "host",
+	"user": "user",
+	"password": "password",
+	"database": "name"
 }

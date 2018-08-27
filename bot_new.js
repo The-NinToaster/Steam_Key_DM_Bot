@@ -11,10 +11,10 @@ let username;
 //mysql
 var pool = mysql.createPool({
 	connectionLimit: 10,
-	host: "localhost",
-	user: "ttg_admin",
-	password: "5x7iwkNp",
-	database: "Alpha_Key_Bot"
+	host: `${config.host}`,
+	user: `${config.user}`,
+	password: `${config.password}`,
+	database: `${config.database}`
 });
 
 //start up 
@@ -60,7 +60,7 @@ client.on('message', message =>
 					{
 						if (!!error)
 						{
-							message.reply("Uh oh! It seems we can't reach our main system right now :cold_sweat: Reach out a developer and tell them that the system is down, please :dissapointed:");
+							message.reply("Uh oh! It seems we can't reach our main system right now :cold_sweat: Reach out a developer and tell them that the system is down, please :disappointed:");
 						}
 						else 
 						{
@@ -134,4 +134,4 @@ client.on('message', message =>
 	}
 }); 
 
-client.login('NDgxODkzOTgzMTYxOTQyMDM2.Dl8-2A.luFbY4xHcUI9G0ravu7WfHe0vhI');
+client.login(`${config.token}`);

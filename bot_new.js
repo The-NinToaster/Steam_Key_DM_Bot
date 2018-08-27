@@ -10,6 +10,7 @@ let username;
 
 //mysql
 var pool = mysql.createPool({
+	connectionLimit: 10,
 	host: "localhost",
 	user: "ttg_admin",
 	password: "5x7iwkNp",
@@ -59,7 +60,7 @@ client.on('message', message =>
 					{
 						if (!!error)
 						{
-							message.reply("Uh oh! It seems we can't reach our main system right now :cold_sweat: Reach out a developer and tell them that the system is down, please :dissapointed:'");
+							message.reply("Uh oh! It seems we can't reach our main system right now :cold_sweat: Reach out a developer and tell them that the system is down, please :dissapointed:");
 						}
 						else 
 						{

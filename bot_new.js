@@ -80,40 +80,42 @@ client.on('message', message =>
 									message.reply("One Key coming right up! :grin: Make sure to check your Direct Messages!. Remember you can only ask for one key per user"); 
 									tempConnection.query(steamKeySQL, function(error, steamKeyResults)
 									{
-									if (err) throw err; 
+										if (err) throw err; 
 
-									if (steamKeyResults.length == 1) //if key is found
-									{
-										let setVerifivationActive = "UPDATE verification SET verification_used = 1 WHERE verification_code = " + signupIdResults[0]; 
-										let setVerifivationName = "UPDATE verification SET discord_username = " + username + " WHERE verification_code = " + signupIdResults[0]; 
-										let setSteamKeyActive = "UPDATE steam_keys SET key_given = 1 WHERE steam_key_no = " + signupIdResults[0].steam_key_no; 
-										let setSteamKeyName = "UPDATE steam_keys SET discord_username = " + username + " WHERE steam_key_no = " + signupIdResults[0].steam_key_no; 
+										if (steamKeyResults.length == 1) //if key is found
+										{
+											let setVerifivationActive = "UPDATE verification SET verification_used = 1 WHERE verification_code = " + signupIdResults[0]; 
+											let setVerifivationName = "UPDATE verification SET discord_username = " + username + " WHERE verification_code = " + signupIdResults[0]; 
+											let setSteamKeyActive = "UPDATE steam_keys SET key_given = 1 WHERE steam_key_no = " + signupIdResults[0].steam_key_no; 
+											let setSteamKeyName = "UPDATE steam_keys SET discord_username = " + username + " WHERE steam_key_no = " + signupIdResults[0].steam_key_no; 
 										
-										message.author.send("You asked? I deliver! Here's one key for you!\n" + 
-										"All you have to do now is go to your Steam Library, click on \"ADD A GAME\" then, \"Activate Product on Steam\" (If you have a skin, follow the steps you need), and follow the instructions!\n" + 
-										"If you do not have steam, you can install it from here: https://store.steampowered.com/about/.  The game is currently compatible on Windows platforms, with Linux and Mac Support coming soon.\n" +
-										"You can check the Table Top Gods server's #getting_started and #news_and_updates channels for more information about the game, testing period and build information.\n" +
-										"If you want to invite a friend to the program, let a developer know so they can tell you how to invite them.\n" + 
-										"Thank you for joining the testing program and we hope to hear your feedback!\n" + 
-										"```Your Steam Key: " + steamKeyResults[0].steam_key + "```"); 
+											message.author.send
+											("You asked? I deliver! Here's one key for you!\n" + 
+												"All you have to do now is go to your Steam Library, click on \"ADD A GAME\" then, \"Activate Product on Steam\" (If you have a skin, follow the steps you need), and follow the instructions!\n" + 
+												"If you do not have steam, you can install it from here: https://store.steampowered.com/about/.  The game is currently compatible on Windows platforms, with Linux and Mac Support coming soon.\n" +
+												"You can check the Table Top Gods server's #getting_started and #news_and_updates channels for more information about the game, testing period and build information.\n" +
+												"If you want to invite a friend to the program, let a developer know so they can tell you how to invite them.\n" + 
+												"Thank you for joining the testing program and we hope to hear your feedback!\n" + 
+												"```Your Steam Key: " + steamKeyResults[0].steam_key + "```"
+											); 
 
-										tempConnection.query(setSteamKeyActiveSQL, function (err, steamKeyValidationResults) {
-                                          if (err) throw err;
-                                        });
+											tempConnection.query(setSteamKeyActiveSQL, function (err, steamKeyValidationResults) {
+												if (err) throw err;
+											});
 										
-										tempConnection.query(setValidationCodeActiveSQL, function (err, signupValidationResults) {
-											if (err) throw err;
-                                        });
+											tempConnection.query(setValidationCodeActiveSQL, function (err, signupValidationResults) {
+												if (err) throw err;
+											 });
                                         
-										tempConnection.query(setSignupSteamKeySQL, function (err, signupSteamKeyResults) {
-											if (err) throw err;
-                                        });
+											tempConnection.query(setSignupSteamKeySQL, function (err, signupSteamKeyResults) {
+												if (err) throw err;
+											 });	
+										}
 
 										else 
 										{
 											message.reply("Oh no! :dissapointed: It seems like there are no keys left. Let a Developer know!");
 										}
-									}
 									}); 
 								}
 

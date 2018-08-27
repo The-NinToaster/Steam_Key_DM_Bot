@@ -71,7 +71,7 @@ client.on('message', message =>
 							message.reply("Yikes! We just found two codes! :confounded: I'm confused now :weary: Ask a Developer for help with this error along with your code"); 
 
 							else if (signupIdResults = 0) 
-							message.reply("Oh no! We can't find your code in our system :cry: Did you type it right? Try copy-pasting your code instead :smile:"); ]
+							message.reply("Oh no! We can't find your code in our system :cry: Did you type it right? Try copy-pasting your code instead :smile:"); 
 
 							else 
 							{

@@ -84,16 +84,16 @@ client.on('message', message =>
 									if (signupIdResults[0].verification_used == 0) //if key has not been used 
 									{
 										message.reply("One Key coming right up! :grin: Make sure to check your Direct Messages!. Remember you can only ask for one key per user"); 
-										tempConnection.query(steamKeySQL, function(error, steamKeyResults)
+										tempConnection.query(steamKeySQL, function(err, steamKeyResults)
 										{
-											if (error) throw err; 
+											if (err) throw err; 
 
 											if (steamKeyResults.length == 1) //if key is found
 											{
-												let setVerifivationActive = "UPDATE verification SET verification_used = 1 WHERE verification_code = " + signupIdResults[0]; 
-												let setVerifivationName = "UPDATE verification SET discord_username = " + username + " WHERE verification_code = " + signupIdResults[0]; 
-												let setSteamKeyActive = "UPDATE steam_keys SET key_given = 1 WHERE steam_key_no = " + signupIdResults[0].steam_key_no; 
-												let setSteamKeyName = "UPDATE steam_keys SET discord_username = " + username + " WHERE steam_key_no = " + signupIdResults[0].steam_key_no; 
+												let setVerificationActive = "UPDATE verification SET verification_used = 1 WHERE verification_code = " + signupIdResults[0]; 
+												let setVerificationName = "UPDATE verification SET discord_username = " + username + " WHERE verification_code = " + signupIdResults[0]; 
+												let setSteamKeyActive = "UPDATE steam_keys SET key_given = 1 WHERE steam_key = " + steamKeyResults[0];
+												let setSteamKeyName = "UPDATE steam_keys SET discord_username = " + username + " WHERE steam_key = " + steamKeyResults[0];
 										
 												message.author.send
 												("You asked? I deliver! Here's one key for you!\n" + 
@@ -105,17 +105,25 @@ client.on('message', message =>
 													"```Your Steam Key: " + steamKeyResults[0].steam_key + "```"
 												); 
 
-												tempConnection.query(setSteamKeyActiveSQL, function (err, steamKeyValidationResults) {
+												tempConnection.query(setSteamKeyActive, function (err, steamKeyValidationResults)
+												{
 													if (err) throw err;
 												});
 										
-												tempConnection.query(setValidationCodeActiveSQL, function (err, signupValidationResults) {
+												tempConnection.query(setVerificationActive, function (err, signupValidationResults) 
+												{
 													if (err) throw err;
-												 });
+												});
                                         
-												tempConnection.query(setSignupSteamKeySQL, function (err, signupSteamKeyResults) {
+												tempConnection.query(setSteamKeyName, function (err, SteamKeyName) 
+												{
 													if (err) throw err;
-												 });	
+												});
+												 
+												tempConnection.query(setVerificationName, function (err, VerificationName)
+												{
+													if (err) throw err; 
+												});
 											}
 
 											else 

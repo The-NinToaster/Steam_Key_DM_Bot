@@ -30,28 +30,31 @@ client.on('message', message =>
 
 	if (message.channel.type === "text")
 	{
+		if (!message.content.startsWith(`${config_new.prefix}`))
+		return; 
+
 		console.log(message.content);
 		messageArray = message.content.split (" "); 
 		command = messageArray[0]; 
 		verification = messageArray[1];
 		username = message.member.user.tag; 
 		console.log(username); 
-		message.reply("Reading... :thinking:"); 
-		message.delete(1000); //deletes after 1 second 
 
-		if (typeof verification != 'undefined' && verification)
-		{	
+		if (typeof verification !== 'undefined' && verification)
+		{		
 			charCount = verification.length;
+			
 			if (charCount !=32)
 			{
+			message.delete(1000); //deletes after 1 second 
 			message.reply("Hey that doesn't seem quite right :tired_face: ... are you sure your verification code is 32 characters long? Try again or Contact a Developer :smile:"); 
 			return; 
 			}
 			else 
 			{
-				if (!command.startsWith(config_new.prefix)) return; 
-				if (command === `${config_new.prefix}verify`) 
-				{
+				if (command === `${config_new.prefix}verify`) {
+					message.reply("Reading... :thinking:"); 
+					message.delete(1000); //deletes after 1 second 
 					//message.reply("hey this works!");
 					let sql = "SELECT * FROM verification WHERE verification_code = " + mysql.escape(verification); 
 					let steamKeySQL = "SELECT * FROM steam_keys WHERE key_given = 0 LIMIT 1";
@@ -69,10 +72,10 @@ client.on('message', message =>
 							{
 								if (err) throw err; 
 
-								if (signupIdResults.length > 1)
+								if  (signupIdResults.length > 1)
 								message.reply("Yikes! We just found two codes! :confounded: I'm confused now :weary: Ask a Developer for help with this error along with your code"); 
 
-								else if (signupIdResults = 0) 
+								else if (signupIdResults == 0)  
 								message.reply("Oh no! We can't find your code in our system :cry: Did you type it right? Try copy-pasting your code instead :smile:"); 
 
 								else 
@@ -83,7 +86,7 @@ client.on('message', message =>
 										message.reply("One Key coming right up! :grin: Make sure to check your Direct Messages!. Remember you can only ask for one key per user"); 
 										tempConnection.query(steamKeySQL, function(error, steamKeyResults)
 										{
-											if (err) throw err; 
+											if (error) throw err; 
 
 											if (steamKeyResults.length == 1) //if key is found
 											{
@@ -124,16 +127,19 @@ client.on('message', message =>
 
 									else 
 									message.reply("Uh oh! :confounded: It seems that key has been used by someone else, or even yourself! If it wasn't you, make sure you wrote it correctly. If you're absolutely sure if wasn't you and you can swear on it, let a Developer know so they can help you!'");
-								}		
-						});
-					}
-				});
-			}
+								}
+							}); 
+							tempConnection.release(); 
+						};
+					}); 
+				};
+			};
 		}
-	}
-	else 
-	message.reply ("Whoops! Looks like mispelled something or you're lacking a verification code :no_mouth: The Dev Team has sent you a code in your email, make sure you enter that next time :smile:"); 
-	}
+		else
+		{
+			message.reply ("Whoops! Looks like mispelled something or you're lacking a verification code :no_mouth: The Dev Team has sent you a code in your email, make sure you enter that next time :smile:"); 
+		};
+	};
 }); 
 
 client.login(`${config_new.token}`);
